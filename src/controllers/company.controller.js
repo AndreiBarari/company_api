@@ -25,7 +25,7 @@ exports.searchCompany = async (req, res) => {
 
   try {
     const dbCompanies = await Company.find({
-      denumire: { $regex: searchTerm, $options: "i" },
+      denumire: { $regex: `\\b${searchTerm}\\b`, $options: "i" },
     });
 
     // Check DB

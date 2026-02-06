@@ -1,27 +1,9 @@
-version: "3.8"
-
 services:
-  # 1. Node App
   api:
     build: .
     ports:
       - "3000:3000"
-
     env_file:
       - .env
-
-    depends_on:
-      - mongo
+    # We removed 'depends_on' and the 'mongo' service
     restart: always
-
-  # 2. The Local Database
-  mongo:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    restart: always
-
-volumes:
-  mongo-data:
